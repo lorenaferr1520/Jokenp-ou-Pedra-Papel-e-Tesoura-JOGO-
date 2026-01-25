@@ -38,7 +38,7 @@ else:
     sleep(1)
     print('PO!!!')
 
-    print('-=-' * 20)
+    print(f'{cores["amarelo"]}-=-{cores["limpa"]}' * 20)
     print(f'O computador jogou {escolha_computador}')
     if computador == 0:
         print('''
@@ -96,7 +96,7 @@ else:
       (____)
 ---.__(___)
 ''')
-    print('-=-' * 20)
+    print(f'{cores["amarelo"]}-=-{cores["limpa"]}' * 20)
 
     if computador == 0:
         if usuario == 0:
