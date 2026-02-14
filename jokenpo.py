@@ -108,7 +108,7 @@ if computador == 0:
 
 elif computador == 1:
     if usuario == 0:
-        (f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
+        print(f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
     elif usuario == 1:
         print(f'{cores["amarelo"]}DEU EMPATE!{cores["limpa"]}')
     elif usuario == 2:
@@ -118,7 +118,7 @@ else:
     if usuario == 0:
         print(f'{cores["verde"]}O USUÁRIO GANHOU!{cores["limpa"]}')
     elif usuario == 1:
-        (f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
+        print(f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
     elif usuario == 2:
         print(f'{cores["amarelo"]}DEU EMPATE!{cores["limpa"]}')
 linhaamarela()
