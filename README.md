@@ -15,3 +15,8 @@ PEDRA                PAPEL               TESOURA
       (_____)                 _______)         __________)
       (____)                 _______)         (____)
 ---.__(___)         ---.__________)     ---.__(___)
+
+02/2026:
+    adição de funções para as ASCII
+    tratamento de erros no input do usuário
+    pato
