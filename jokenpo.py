@@ -29,6 +29,20 @@ def tesoura():
       (____)
 ---.__(___)
 ''')
+# variaveis de repetições
+repetições = int()
+vitoriasuser = 0
+vitoriascomputador = 0
+totalempates = 0
+count = 1
+#def resultados
+def empate():
+    print(f'{cores["amarelo"]}DEU EMPATE!{cores["limpa"]}')
+def computadorganha():
+    print(f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
+
+def usuarioganha():
+    print(f'{cores["verde"]}O USUÁRIO GANHOU!{cores["limpa"]}')   
 # def linha
 def linhaamarela():
     print(f'{cores["amarelo"]}-=-{cores["limpa"]}' * 20)
@@ -47,80 +61,116 @@ cores = {
 }
 
 itens = ('Pedra', 'Papel', 'Tesoura')
-computador = randint(0,2) # escolha do computador
-escolha_computador = itens[computador]
 print(f'{cores["amarelo"]}-=-=-=-=-=-=-=-=-=- PEDRA, PAPEL E TESOURA -=-=-=-=-=-=-=-=-{cores["limpa"]}')
 # escolha do usuário com tratamento de erros:
+
 while True:
     try:
-        usuario = int(input('''Suas opções:
-        [0] PEDRA
-        [1] PAPEL
-        [2] TESOURA
-        Qual é a sua jogada? '''))
-        
-        # O IF deve estar dentro do TRY para filtrar o número logo após a digitação
-        if 0 <= usuario <= 2:
-            break  # Único lugar onde o código tem permissão de sair do loop
-        else:
-            print(f'{cores["vermelho"]}JOGADA INVÁLIDA!{cores["limpa"]}')
-            print('Por favor, escolha entre 0, 1 ou 2.')
-
+        repetições = int(input("melhor de quantas: "))
     except ValueError:
-        print(f'{cores["vermelho"]}JOGADA INVÁLIDA!{cores["limpa"]}')
-        print('Por favor, digite um número inteiro.')
+        print("apenas números!")
+    else:
+        break
 
+while count <= repetições:
+    while True:
+        try:
+            usuario = int(input('''Suas opções:
+            [0] PEDRA
+            [1] PAPEL
+            [2] TESOURA
+            Qual é a sua jogada? '''))
+            
+            # O IF deve estar dentro do TRY para filtrar o número logo após a digitação
+            if 0 <= usuario <= 2:
+                break  # Único lugar onde o código tem permissão de sair do loop
+            else:
+                print(f'{cores["vermelho"]}JOGADA INVÁLIDA!{cores["limpa"]}')
+                print('Por favor, escolha entre 0, 1 ou 2.')
 
-escolha_usuário = itens[usuario]
-     
-print('JO')
-sleep(1)
-print('KEN')
-sleep(1)
-print('PO!!!')
+        except ValueError:
+            print(f'{cores["vermelho"]}JOGADA INVÁLIDA!{cores["limpa"]}')
+            print('Por favor, digite um número inteiro.')
 
-linhaamarela()
-print(f'O computador jogou {escolha_computador}')
-if computador == 0:
-    pedra()
-elif computador == 1:
-    papel()
-else:
-    tesoura()
+    computador = randint(0,2) # escolha do computador
+    escolha_computador = itens[computador]
+    escolha_usuário = itens[usuario]
         
-print(f'O usuário jogou {escolha_usuário}')
-if usuario == 0:
-    pedra()
-elif usuario == 1:
-    papel()
-else:
-    tesoura()
+    print('JO')
+    sleep(1)
+    print('KEN')
+    sleep(1)
+    print('PO!!!')
+
+    linhaamarela()
+    print(f'O computador jogou {escolha_computador}')
+    if computador == 0:
+        pedra()
+    elif computador == 1:
+        papel()
+    else:
+        tesoura()
+            
+    print(f'O usuário jogou {escolha_usuário}')
+    if usuario == 0:
+        pedra()
+    elif usuario == 1:
+        papel()
+    else:
+        tesoura()
+    linhaamarela()
+
+    # comparação de escolhas usuário e computador e definição da vitória
+    if computador == 0:
+        if usuario == 0:
+            empate()
+            totalempates += 1
+        elif usuario == 1:
+            usuarioganha()
+            vitoriasuser += 1
+        elif usuario == 2:
+            computadorganha()
+            vitoriascomputador += 1
+
+    elif computador == 1:
+        if usuario == 0:
+            computadorganha()
+            vitoriascomputador += 1
+        elif usuario == 1:
+            empate()
+            totalempates += 1
+        elif usuario == 2:
+            usuarioganha()
+            vitoriasuser += 1
+
+    else:
+        if usuario == 0:
+            usuarioganha()
+            vitoriasuser += 1
+        elif usuario == 1:
+            computadorganha()
+            vitoriascomputador += 1
+        elif usuario == 2:
+            empate()
+            totalempates += 1
+    count += 1
+# mostra os resultados gerais
 linhaamarela()
+print(f"{cores['sublinhado']}resultado final:{cores['limpa']}")
+print(f'Usuário ganhou {vitoriasuser}')
+print(f'Computador ganhou {vitoriascomputador}')
+if totalempates > 0:
+    print(f'Ouve um total de {totalempates} empates!')
 
-# comparação de escolhas usuário e computador e definição da vitória
-if computador == 0:
-    if usuario == 0:
-        print(f'{cores["amarelo"]}DEU EMPATE!{cores["limpa"]}')
-    elif usuario == 1:
-        print(f'{cores["verde"]}O USUÁRIO GANHOU!{cores["limpa"]}')
-    elif usuario == 2:
-        print(f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
-
-elif computador == 1:
-    if usuario == 0:
-        print(f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
-    elif usuario == 1:
-        print(f'{cores["amarelo"]}DEU EMPATE!{cores["limpa"]}')
-    elif usuario == 2:
-        print(f'{cores["verde"]}O USUÁRIO GANHOU!{cores["limpa"]}')
-
+# mostra quem ganhou de todas as partidas
+linhaamarela()
+if vitoriasuser > vitoriascomputador:
+    print(f'{cores["verde"]} Vitória  do usuario no melhor de {repetições}! {cores["limpa"]}')
+elif vitoriasuser == vitoriascomputador:
+    print(f'{cores["amarelo"]} Empate entre usuário e computador no melhor de {repetições}! {cores["limpa"]}')
 else:
-    if usuario == 0:
-        print(f'{cores["verde"]}O USUÁRIO GANHOU!{cores["limpa"]}')
-    elif usuario == 1:
-        print(f'{cores["vermelho"]}O COMPUTADOR GANHOU!{cores["limpa"]}')
-    elif usuario == 2:
-        print(f'{cores["amarelo"]}DEU EMPATE!{cores["limpa"]}')
+    print(f'{cores["vermelho"]} Vitória  do computador no melhor de {repetições}! {cores["limpa"]}')
+
 linhaamarela()
 print(f'''{cores["amarelo"]}Fim do programa 
   __
