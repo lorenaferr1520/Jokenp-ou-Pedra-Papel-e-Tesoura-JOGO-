@@ -15,7 +15,7 @@ Oi! Este é o meu primeiro projeto de jogo interativo. Fiz ele durante o curso d
     - Animação:time.sleep para dar um tempo entre o "JO... KEN... PO!".
     - Cores no Terminal: dicionário de cores para deixar o resultado mais    fácil de ler (Verde para vitória e Vermelho para derrota).
 
-🎨 Arte ASCII para cada jogada, assim o terminal fica mais visual e divertido de jogar. Também tratei o erro de quando o usuário digita um número que não existe, para o programa não travar.
+🎨 Arte ASCII para cada jogada, assim o terminal fica mais visual e divertido de jogar.
 
 PEDRA                PAPEL               TESOURA
     _______             _______             _______
